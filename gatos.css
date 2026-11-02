@@ -1,0 +1,385 @@
+/* ---------- Panel para agregar nombres ---------- */
+.panel {
+    margin-bottom: 30px;
+    padding: 22px;
+    background: var(--blanco);
+    border: 4px solid var(--rosa);
+    border-radius: 24px;
+    box-shadow: 0 6px 0 var(--celeste), 0 10px 18px rgba(91, 58, 82, 0.15);
+  }
+  
+  .formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .formulario input {
+    flex: 1 1 240px;
+    padding: 14px 20px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.1rem;
+    color: var(--texto);
+    background: #fff;
+    border: 3px solid var(--celeste);
+    border-radius: 50px;
+    outline: none;
+  }
+  
+  .formulario input:focus {
+    border-color: var(--rosa-fuerte);
+  }
+  
+  .btn {
+    padding: 12px 26px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--rosa-fuerte), var(--celeste-fuerte));
+    border: 3px solid #fff;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(91, 58, 82, 0.3);
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  
+  .btn:hover:not(:disabled) {
+    transform: scale(1.06);
+  }
+  
+  .btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  
+  .btn-grande {
+    padding: 14px 34px;
+    font-size: 1.2rem;
+  }
+  
+  .btn-claro {
+    color: var(--rosa-fuerte);
+    background: #fff;
+    border-color: var(--rosa);
+    box-shadow: none;
+  }
+  
+  .aviso {
+    min-height: 1.4em;
+    margin-top: 8px;
+    font-weight: 700;
+    color: var(--rosa-fuerte);
+  }
+  
+  .contador {
+    margin: 8px 0;
+    font-weight: 700;
+  }
+  
+  .lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+    list-style: none;
+  }
+  
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px 6px 14px;
+    font-weight: 700;
+    background: var(--rosa-claro);
+    border: 3px solid var(--color);
+    border-radius: 50px;
+  }
+  
+  .chip .punto {
+    width: 14px;
+    height: 14px;
+    background: var(--color);
+    border-radius: 50%;
+  }
+  
+  .chip button {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+    color: var(--texto);
+    background: rgba(91, 58, 82, 0.12);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .chip button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  
+  .acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  /* ---------- Hipódromo ---------- */
+  .hipodromo {
+    position: relative;
+  }
+  
+  .pista {
+    overflow: hidden;
+    min-height: 140px;
+    background: var(--blanco);
+    border: 5px solid var(--celeste);
+    border-radius: 24px;
+    box-shadow: 0 6px 0 var(--rosa), 0 10px 18px rgba(91, 58, 82, 0.15);
+  }
+  
+  .vacio {
+    padding: 50px 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  
+  .carril {
+    --ancho-gato: clamp(60px, 9vw, 88px);
+    display: flex;
+    align-items: stretch;
+    height: 74px;
+    background: var(--rosa-claro);
+    border-bottom: 3px dashed rgba(91, 58, 82, 0.15);
+  }
+  
+  .carril:nth-child(even) {
+    background: var(--celeste-claro);
+  }
+  
+  .carril:last-child {
+    border-bottom: none;
+  }
+  
+  .carril.nuevo {
+    animation: entrar-carril 0.4s ease both;
+  }
+  
+  .carril.ganadora {
+    box-shadow: inset 0 0 0 4px #ffc93c;
+  }
+  
+  .carril.ganadora .etiqueta::after {
+    content: " 🏆";
+  }
+  
+  .etiqueta {
+    flex: 0 0 clamp(84px, 14vw, 130px);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    overflow: hidden;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #4a2f43;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background: var(--color);
+    box-shadow: inset -4px 0 0 rgba(255, 255, 255, 0.5);
+  }
+  
+  .recorrido {
+    position: relative;
+    flex: 1;
+  }
+  
+  /* Meta a cuadros */
+  .meta {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 22px;
+    background: repeating-conic-gradient(#3b2a35 0 25%, #fff 0 50%) 0 0 / 22px 22px;
+  }
+  
+  /* ---------- El gatito ---------- */
+  .gato {
+    position: absolute;
+    bottom: 6px;
+    left: calc(var(--pos, 0) * (100% - var(--ancho-gato)));
+    z-index: 2;
+    width: var(--ancho-gato);
+  }
+  
+  .gato svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  
+  .pata,
+  .cola {
+    transform-box: fill-box;
+  }
+  
+  .pata {
+    transform-origin: center top;
+  }
+  
+  .cola {
+    transform-origin: 100% 100%;
+  }
+  
+  /* Animación solo mientras corren */
+  .corriendo .gato {
+    animation: rebote 0.28s ease-in-out infinite alternate;
+  }
+  
+  .corriendo .p1,
+  .corriendo .p4 {
+    animation: pata-a 0.28s ease-in-out infinite alternate;
+  }
+  
+  .corriendo .p2,
+  .corriendo .p3 {
+    animation: pata-b 0.28s ease-in-out infinite alternate;
+  }
+  
+  .corriendo .cola {
+    animation: mover-cola 0.4s ease-in-out infinite alternate;
+  }
+  
+  @keyframes rebote {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-5px); }
+  }
+  
+  @keyframes pata-a {
+    from { transform: rotate(28deg); }
+    to   { transform: rotate(-28deg); }
+  }
+  
+  @keyframes pata-b {
+    from { transform: rotate(-28deg); }
+    to   { transform: rotate(28deg); }
+  }
+  
+  @keyframes mover-cola {
+    from { transform: rotate(-10deg); }
+    to   { transform: rotate(14deg); }
+  }
+  
+  @keyframes entrar-carril {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: none; }
+  }
+  
+  /* ---------- Cuenta regresiva ---------- */
+  .cuenta {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Pacifico", cursive;
+    font-size: clamp(4rem, 14vw, 9rem);
+    color: #fff;
+    text-shadow: 4px 4px 0 var(--rosa-fuerte), 8px 8px 0 var(--celeste-fuerte);
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  .cuenta.visible {
+    animation: pop-cuenta 0.8s ease both;
+  }
+  
+  @keyframes pop-cuenta {
+    0%   { opacity: 0; transform: scale(0.3); }
+    30%  { opacity: 1; transform: scale(1.25); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  
+  /* ---------- Ganador ---------- */
+  .ganador {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(91, 58, 82, 0.45);
+  }
+  
+  .ganador.oculto {
+    display: none;
+  }
+  
+  .ganador-caja {
+    max-width: 480px;
+    padding: 28px 34px;
+    text-align: center;
+    background: var(--blanco);
+    border: 5px solid #ffc93c;
+    border-radius: 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: abrir-ganador 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  
+  .trofeo {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+  
+  .ganador-caja h2 {
+    margin-top: 6px;
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    color: var(--celeste-fuerte);
+  }
+  
+  .ganador-nombre {
+    margin: 8px 0 20px;
+    font-family: "Pacifico", cursive;
+    font-size: clamp(2rem, 7vw, 3.4rem);
+    color: var(--rosa-fuerte);
+    text-shadow: 2px 2px 0 rgba(95, 187, 232, 0.5);
+    word-break: break-word;
+  }
+  
+  .ganador-botones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  @keyframes abrir-ganador {
+    from { opacity: 0; transform: scale(0.6); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  
+  /* ---------- Confeti ---------- */
+  .confeti {
+    position: fixed;
+    top: -50px;
+    z-index: 1001;
+    pointer-events: none;
+    animation: caer-confeti linear forwards;
+  }
+  
+  @keyframes caer-confeti {
+    to { transform: translateY(115vh) rotate(540deg); }
+  }
+
+/* ---------- Botón "Volver a los cuentos" ---------- */
+footer .boton-gatos {
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }

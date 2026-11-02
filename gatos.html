@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrera de Gatitos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="gatos.css">
+</head>
+<body>
+
+  <div class="decoracion" aria-hidden="true">
+    <span class="nube nube-1">☁️</span>
+    <span class="nube nube-2">☁️</span>
+    <span class="nube nube-3">☁️</span>
+  </div>
+
+  <header class="cabecera">
+    <h1>Carrera de Gatitos</h1>
+    <p>Agrega nombres y mira quién llega primero 🐾</p>
+
+    <svg class="ola" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,64 C240,120 480,0 720,48 C960,96 1200,16 1440,64 L1440,120 L0,120 Z"></path>
+    </svg>
+  </header>
+
+  <main>
+    <!-- Agregar nombres -->
+    <section class="panel">
+      <form id="formulario" class="formulario" autocomplete="off">
+        <input id="nombre" type="text" maxlength="16"
+               placeholder="Escribe un nombre (o varios separados por coma)"
+               aria-label="Nombre del gatito">
+        <button type="submit" class="btn">Agregar gatito 🐾</button>
+      </form>
+
+      <p id="aviso" class="aviso" aria-live="polite"></p>
+      <p id="contador" class="contador">Todavía no hay gatitos</p>
+      <ul id="lista" class="lista"></ul>
+
+      <div class="acciones">
+        <button id="btn-empezar" class="btn btn-grande" disabled>🏁 ¡Empezar carrera!</button>
+        <button id="btn-vaciar" class="btn btn-claro" disabled>Quitar a todos</button>
+      </div>
+    </section>
+
+    <!-- Hipódromo -->
+    <section class="hipodromo">
+      <div id="pista" class="pista">
+        <p id="vacio" class="vacio">Agrega nombres y cada uno tendrá su gatito en la pista 🐱</p>
+      </div>
+      <div id="cuenta" class="cuenta" aria-live="assertive"></div>
+    </section>
+  </main>
+
+  <!-- Ganador -->
+  <div id="ganador" class="ganador oculto" role="dialog" aria-modal="true">
+    <div class="ganador-caja">
+      <div class="trofeo">🏆</div>
+      <h2>¡Tenemos ganador!</h2>
+      <p id="ganador-nombre" class="ganador-nombre"></p>
+      <div class="ganador-botones">
+        <button id="btn-otra" class="btn">🔁 Otra carrera</button>
+        <button id="btn-quitar-ganador" class="btn btn-claro">Quitar al ganador</button>
+        <button id="btn-cerrar-ganador" class="btn btn-claro">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <a class="boton-gatos" href="index.html">📖 Volver a los cuentos</a>
+  </footer>
+
+  <script src="gatos.js"></script>
+</body>
+</html>
