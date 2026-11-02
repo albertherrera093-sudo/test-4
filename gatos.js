@@ -307,7 +307,7 @@ function terminar(gato) {
 }
 
 function lluviaDeConfeti() {
-  const signos = ["⭐", "🎉", "✨", "🐾", "💖", "🎀"];
+  const signos = ["⭐"];
 
   for (let i = 0; i < 50; i++) {
     const c = document.createElement("span");
